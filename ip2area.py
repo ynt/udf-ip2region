@@ -48,10 +48,10 @@ if __name__ == '__main__':
 
             region = data["region"].decode("utf8").split('|')
 
-            del region[1]
-
             # region[1] 为区域，如有需要，可加入到最后
             # a.append(region[1])
+            del region[1]
+
             region.insert(0, line)
 
             # hive 中使用制表符(\t)来分隔字段，可返回多个字段供 hive 使用。
