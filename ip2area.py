@@ -28,9 +28,9 @@ def check_ip(ip_addr):
         return False
 
 
-searcher = Ip2Region("ip2region.db")
-
 if __name__ == '__main__':
+    searcher = Ip2Region("ip2region.db")
+
     for line in sys.stdin:
         line = line.strip()
 
@@ -45,13 +45,16 @@ if __name__ == '__main__':
             # memorySearch > btreeSearch > binarySearch
             data = searcher.btreeSearch(line)
 
-            region = data["region"].split('|')
+            region = data["region"].decode("utf8").split('|')
+
+            del region[1]
+
             # region[1] 为区域，如有需要，可加入到最后
             # a.append(region[1])
-            del region[1]
             region.insert(0, line)
 
             # hive 中使用制表符(\t)来分隔字段，可返回多个字段供 hive 使用。
             print('\t'.join(region))
         except Exception as e:
+            print(e)
             print(line)
