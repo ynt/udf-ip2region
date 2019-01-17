@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import ip2Region
 """
 " Hive python udf
 " ip 地址转地区
@@ -14,14 +15,17 @@
 " ( select '127.0.2222.1' as ip ) t;
 "
 """
+
 import sys
 import re
+import os
 
-from ip2Region import Ip2Region
+sys.path.append(os.getcwd())
 
 
 def check_ip(ip_addr):
-    compile_ip = re.compile('^(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)$')
+    compile_ip = re.compile(
+        '^(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)$')
 
     if compile_ip.match(ip_addr):
         return True
@@ -30,7 +34,7 @@ def check_ip(ip_addr):
 
 
 if __name__ == '__main__':
-    searcher = Ip2Region("ip2region.db")
+    searcher = ip2Region.Ip2Region("ip2region.db")
 
     for line in sys.stdin:
         line = line.strip()
