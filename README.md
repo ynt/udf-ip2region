@@ -11,7 +11,7 @@
 
 ## 添加脚本到 hive
 ```sql
-add file /data/hive-pyhton-udf/ip2region/ip2region.db /data/hive-pyhton-udf/ip2region/ip2Region.py /data/hive-pyhton-udf/ip2region/ip2area.py;
+add file /data/hive-pyhton-udf/udf-ip2region/ip2region.db /data/hive-pyhton-udf/udf-ip2region/ip2Region.py /data/hive-pyhton-udf/udf-ip2region/ip2area.py;
 ```
 
 ## Hive 中使用
