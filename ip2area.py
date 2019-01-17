@@ -8,7 +8,7 @@
 "
 " 用法：
 " ## 添加脚本到 hive
-" add file path/to/ip2region.db path/to/ip2Region.py ipath/to/p2area.py;
+" add file path/to/ip2region.db path/to/ip2Region.py path/to/p2area.py;
 " ## 使用脚本
 " select TRANSFORM(ip) USING "python ip2area.py" as (ip,country,province,city,isp) from
 " ( select '127.0.2222.1' as ip ) t;
