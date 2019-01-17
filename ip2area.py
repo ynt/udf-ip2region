@@ -1,12 +1,4 @@
 # -*- coding:utf-8 -*-
-import os
-import re
-import sys
-
-sys.path.append(os.getcwd())
-import ip2Region
-
-
 """
 " Hive python udf
 " ip 地址转地区
@@ -19,9 +11,15 @@ import ip2Region
 " add file path/to/ip2region.db path/to/ip2Region.py path/to/p2area.py;
 " ## 使用脚本
 " select TRANSFORM(ip) USING "python ip2area.py" as (ip,country,province,city,isp) from
-" ( select '127.0.2222.1' as ip ) t;
+" ( select '127.0.222.1' as ip ) t;
 "
 """
+import os
+import re
+import sys
+
+sys.path.append(os.getcwd())
+import ip2Region
 
 
 def check_ip(ip_addr):
