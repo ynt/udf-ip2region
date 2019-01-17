@@ -57,5 +57,4 @@ if __name__ == '__main__':
             # hive 中使用制表符(\t)来分隔字段，可返回多个字段供 hive 使用。
             print('\t'.join(region))
         except Exception as e:
-            print(e)
             print(line)
