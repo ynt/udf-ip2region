@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
-import sys
-import re
 import os
+import re
+import sys
 
 sys.path.append(os.getcwd())
-from ip2Region import Ip2Region
+import ip2Region
+
 
 """
 " Hive python udf
@@ -23,7 +24,6 @@ from ip2Region import Ip2Region
 """
 
 
-
 def check_ip(ip_addr):
     compile_ip = re.compile(
         '^(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)$')
@@ -35,7 +35,7 @@ def check_ip(ip_addr):
 
 
 if __name__ == '__main__':
-    searcher = Ip2Region("ip2region.db")
+    searcher = ip2Region.Ip2Region("ip2region.db")
 
     for line in sys.stdin:
         line = line.strip()
@@ -51,7 +51,8 @@ if __name__ == '__main__':
             # memorySearch > btreeSearch > binarySearch
             data = searcher.btreeSearch(line)
 
-            region = data["region"].decode("utf8").split('|')
+            # region = data["region"].decode("utf8").split('|')
+            region = data["region"].split('|')
 
             # region[1] 为区域，如有需要，可加入到最后
             # a.append(region[1])
