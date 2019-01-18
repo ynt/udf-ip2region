@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 """
 " Hive python udf
-" ip 地址转地区
+" ip 地址转地理位置
 "
 " Author: Mo<mo@gladmo.com>
 " Date : 2019-01-17 11:57:32
